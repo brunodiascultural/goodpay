@@ -8,7 +8,7 @@ class ControlerUserLogin {
     checkLogin() {
         this.status = true;
     }
-    checkOutLogin(){
+    checkOutLogin() {
         this.status = false;
     }
     loginInfo(user, senha) {
@@ -16,22 +16,25 @@ class ControlerUserLogin {
 
         if (user === null || senha === null || user === "" || senha === "") {
             this.checkOutLogin();
-            localStorage.status=this.status;
+            localStorage.status = this.status;
             return (comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "camposVazios1"));
         } else {
             if (!infoCheck) {
                 this.checkOutLogin();
-                localStorage.status=this.status;
+                localStorage.status = this.status;
                 return (comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "usuarioNaoExiste1"));
             } else {
                 if (infoCheck.senha === senha) {
                     this.checkLogin();
-                    localStorage.status=this.status;
+                    localStorage.status = this.status;
+                    localStorage.email = infoCheck.email;
+                    localStorage.userName = infoCheck.username
+                    console.log(localStorage.email);
                     return (comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "loginExecutado1"));
                 } else {
                     this.checkOutLogin();
-                    localStorage.status=this.status;
-                    return(comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "falhaLogin1"));
+                    localStorage.status = this.status;
+                    return (comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "falhaLogin1"));
                 }
             }
         }
