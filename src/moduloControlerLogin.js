@@ -29,7 +29,6 @@ class ControlerUserLogin {
                     localStorage.status = this.status;
                     localStorage.email = infoCheck.email;
                     localStorage.userName = infoCheck.username
-                    console.log(localStorage.email);
                     return (comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "loginExecutado1"));
                 } else {
                     this.checkOutLogin();

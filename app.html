@@ -12,7 +12,7 @@
 <body class="trancaTela">
     <nav class="navbar navbar-light bg-light fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/recuperar.html">
                 <img src="./img/logoTexto.png" width="140" height="60" class="img-default" alt="Logo Letras GoodPay">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -35,7 +35,7 @@
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
-                    <button class="btn btn-outline-dark mt-2 ms-auto d-block">
+                    <button id="btnSair" class="btn btn-outline-dark mt-2 ms-auto d-block">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-door-closed-fill" viewBox="0 0 16 16">
                             <path
@@ -58,8 +58,6 @@
                                                     d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
                                             </svg>
                                         </span>
-                                        <input type="text" id="usuario" class="form-control"
-                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                     </div>
                                     <div class="input-group input-group-lg campoLogin">
                                         <span class="input-group-text" id="inputGroup-sizing-lg">
@@ -154,18 +152,18 @@
         </div>
     </nav>
 
-    <div id="myModalApp" class="modal" tabindex="-1">
+    <div id="myModalApp" class="modal" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 id="titleModalApp" class="modal-title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button id="btnModalCloseApp" type="button" class="btn-close" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p id="bodyModalApp">Vamos organizar suas finanças!</p>
                 </div>
                 <div class="modal-footer">
-                    <button id="btnModalCloseApp" type="button" class="btn btn-success"
+                    <button id="btnModalApp" type="button" class="btn btn-success"
                         data-bs-dismiss="modal">Começar</button>
                 </div>
             </div>

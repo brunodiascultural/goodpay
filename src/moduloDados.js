@@ -9,13 +9,5 @@ const userLogin = [
         senha: "ff123456",
         email: "marceloff@gmail.com"
     },
-
-
-    
-
-    // --------------------- APAGAR ------------------------------
-    {
-        id: 1003, username: "rdfn37", senha: "123", email: "rdfn37@gmail.com"
-    }
 ];
 export default userLogin;

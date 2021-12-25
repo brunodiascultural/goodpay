@@ -1,10 +1,8 @@
 import controlerUserLogin from "./moduloControlerLogin.js";
 import controleRotasApp from "./moduloControleRotas.js";
-import userLogin from "./moduloDados.js";
 
 //Trazendo elementos do Bootstrap para uso da main Javascript.
 if (window.location.pathname != "/app.html") {
-    console.log(localStorage)
     var myModal = new bootstrap.Modal(document.getElementById('myModal'))
 }
 //Ordem para executar e validar o Login.
@@ -20,7 +18,7 @@ entrarUsuario.addEventListener("click", (event) => {
     document.getElementById("btnModalSave").innerHTML = alertModal.b2;
 
     myModal.show();
-    setTimeout(carregarPagina, 5);
+    setTimeout(carregarPagina, 5000);
     function carregarPagina() {
         window.location.href = controleRotasApp.validaRota(localStorage.status, alertModal.idModal);
     }
@@ -31,33 +29,39 @@ novoUsuario.addEventListener("click", (event) => {
     window.location.href = controleRotasApp.validaRota("false", "usuarioNaoExiste1");
 });
 
-// console.log(localStorage.email)
-
-
-// if(usuario.username === usuario.email) {
-//    
-//}
-
-
-
+// Controle de acesso ao App.html
 if (window.location.pathname === "/app.html") {
-    console.log(localStorage)
+
     var myModalApp = new bootstrap.Modal(document.getElementById('myModalApp'))
     document.getElementById("emailBadge").innerHTML = localStorage.email
 
-    // console.log(controlerUserLogin.loginInfo())
-
     document.getElementById("titleModalApp").innerHTML = `Seja bem vindo, ${localStorage.userName}!`
 
+    document.getElementById("btnSair").addEventListener("click", e => {
+        localStorage.clear()
+        window.location.pathname = "/index.html"
+    })
 
-    if (localStorage.getItem("contador") === null) {
+    if (!localStorage.email) {
+        document.getElementById("titleModalApp").innerHTML = "Erro!"
+        document.getElementById("bodyModalApp").innerHTML = "Você não possui permissão para acessar essa página!"
+        document.getElementById("btnModalApp").innerHTML = "Voltar"
+        document.getElementById("btnModalApp").addEventListener("click", e => {
+            window.location.pathname = "/index.html"
+        })
+        document.getElementById("btnModalCloseApp").addEventListener("click", e => {
+            window.location.pathname = "/index.html"
+        })
+
+        myModalApp.show()
+    } else if (localStorage.getItem("contador") === null) {
         myModalApp.show()
         localStorage.setItem("contador", "feito")
     }
 
-    if(!localStorage.email) {
-        window.location.pathname = "/index.html";
-    } 
 } else {
-    localStorage.clear();
+    localStorage.removeItem("email");
+    localStorage.removeItem("userName")
+    localStorage.removeItem("contador")
+    localStorage.removeItem("status")
 }
