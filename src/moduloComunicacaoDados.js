@@ -18,6 +18,11 @@ const comunicacaoModal = [
     title: "Não foi possivel logar.", 
     bodyModal: "Erro nas informações dadas ao sitema GoodPay.", 
     b1: "Fechar", 
-    b2: "Esqueci a senha"}
+    b2: "Esqueci a senha"},
+    {idModal: 'tentativasDemais1',
+    title: 'Esqueceu seu login?',
+    bodyModal: ``,
+    b1: "Fechar",
+    b2: "Recuperar Senha"}
 ];
 export default comunicacaoModal;
