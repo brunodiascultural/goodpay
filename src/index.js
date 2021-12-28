@@ -1,5 +1,21 @@
 import controlerUserLogin from "./moduloControlerLogin.js";
 import controleRotasApp from "./moduloControleRotas.js";
+import cardsBuilder from "./moduloControlerCards.js";
+
+// Adicionando cards
+adicionarBloco();
+function adicionarBloco(){
+    let blocoCards = cardsBuilder.addCards();
+    blocoCards.forEach((cards, index) => {
+    document.querySelector(`#cardImagem${index+1}`).innerHTML = `
+    <img src="${cards.img}" class="card-img-top"/>`
+    document.getElementById(`cardTitulo${index+1}`).innerHTML = cards.title;
+    document.getElementById(`cardTexto${index+1}`).innerHTML = cards.body;
+    document.getElementById(`cardRodape${index+1}`).innerHTML = cards.date;
+});
+    
+   setTimeout(adicionarBloco, 90000);
+}
 
 //Trazendo elementos do Bootstrap para uso da main Javascript.
 if (window.location.pathname != "/app.html") {
