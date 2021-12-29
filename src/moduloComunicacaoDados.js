@@ -41,6 +41,12 @@ const comunicacaoModal = [
     bodyModal: '',
     b1: 'Fechar',
     b2: 'Imprimir'
-  }
+  },
+  {
+    idModal: "listaRotas", 
+    title: "Rotas possíveis de Login.", 
+    bodyModal: "", 
+    b1: "Fechar", 
+    b2: "Salvar"}
 ]
 export default comunicacaoModal

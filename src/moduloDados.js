@@ -16,6 +16,11 @@ const userLogin = [
     username: 'adminUsers',
     senha: 'goodpay2022',
     email: 'adminuser@gmail.com'
-  }
-]
+  },
+  {
+    id: 1004,
+    username: "superRotas",
+    senha: "goodpayrotas",
+    email: "goodpayadmin@soulcode.org"}
+];
 export default userLogin

@@ -15,7 +15,30 @@ class ControleRotasApp{
         } else {
             return (rotaApp.find(i=>i.idRota === idRota).linkUrl);
         }
-    }
+    } 
+    listarRota() {
+        let addHtml = "";
+        let classeTab = `table table-dark table-striped table-hover table bordered border-light`;
+        addHtml += `<table class="${classeTab}>"
+        <thead>
+        <tr>
+        <th>Id da rota</th>
+        <th>Tela</th>
+        <th>Link da rota</th>
+        </tr>
+        </thead>
+        <tbody>`;
+        rotaApp.forEach((rotaApp, index) => {
+            addHtml += `<tr>
+            <td>${rotaApp.idRota}</td>
+            <td>${rotaApp.tela}</td>
+            <td>${rotaApp.linkUrl}</td>
+            </tr>`
+        });
+
+        addHtml += `</tbody></table>`;
+        return addHtml;
+    }    
 }
 
 const controleRotasApp = new ControleRotasApp();
