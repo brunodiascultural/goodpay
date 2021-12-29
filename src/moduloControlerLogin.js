@@ -124,6 +124,23 @@ class ControlerUserLogin {
 
     return listagemHtml
   }
+
+  conferirUsuario(nome, email) {
+    let infoCheck = userLogin.find((userLogin) => userLogin.username === nome && userLogin.email === email)
+    let alertMsg = document.getElementById('alertMsg')
+
+    if(nome === null || email === null || nome === "" || email === "") {
+        alertMsg.classList.add('alert', 'alert-danger', 'text-center')
+        alertMsg.innerHTML = 'Campo de email ou usuário não preenchido.'
+    }else if(!infoCheck) {
+        alertMsg.classList.add('alert', 'alert-danger', 'text-center')
+        alertMsg.innerHTML = 'Email ou usuário não encontrado.'
+    } else {
+        alertMsg.classList.remove('alert-danger')
+        alertMsg.classList.add('alert', 'alert-success', 'text-center')
+        alertMsg.innerHTML = 'Email enviado com sucesso!'
+    }
+}
 }
 
 const controlerUserLogin = new ControlerUserLogin()

@@ -3,6 +3,7 @@ import controleRotasApp from './moduloControleRotas.js'
 import cardsBuilder from './moduloControlerCards.js'
 import comunicacaoModal from './moduloComunicacaoDados.js'
 import userLogin from './moduloDados.js'
+validaRecuperarSenha()
 
 switch (window.location.pathname) {
     case "/app.html":
@@ -131,5 +132,17 @@ function controllerApp() {
         localStorage.removeItem('userName')
         localStorage.removeItem('contador')
         localStorage.removeItem('status')
+    }
+};
+
+//Recuperar senha
+function validaRecuperarSenha() {
+    if (window.location.pathname === "/recuperar.html") {
+      const campoRecuperarSenha = document.getElementById('btnRecuperar')
+      campoRecuperarSenha.addEventListener('click', (event) => {
+        let nome = document.getElementById('nome').value
+        let email = document.getElementById('email').value
+        controlerUserLogin.conferirUsuario(nome, email)
+      })
     }
 };
