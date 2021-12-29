@@ -1,6 +1,6 @@
 import userLogin from './moduloDados.js'
 import comunicacaoModal from './moduloComunicacaoDados.js'
-
+import controleRotasApp from './moduloControleRotas.js';
 class ControlerUserLogin {
   constructor(status) {
     this.status = status
@@ -37,6 +37,12 @@ class ControlerUserLogin {
       this.checkOutLogin()
       localStorage.status = this.status
       return comunicacaoModal.find(i => i.idModal === 'usuarioNaoExiste1')
+    } else if(
+      // Verifica se senha e usuário são do superRotas
+      infoCheck.senha === senha && infoCheck.username === "superRotas"
+      ) {
+      comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "listaRotas").bodyModal = controleRotasApp.listarRota();
+      return (comunicacaoModal.find((comunicacaoModal) => comunicacaoModal.idModal === "listaRotas"));
     } else if (
       // Verifica se senha e usuário são do admin
       user === userLogin.find(findAdmin).username &&
