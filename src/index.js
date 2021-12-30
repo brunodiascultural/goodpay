@@ -3,6 +3,8 @@ import controleRotasApp from './moduloControleRotas.js'
 import cardsBuilder from './moduloControlerCards.js'
 import comunicacaoModal from './moduloComunicacaoDados.js'
 import userLogin from './moduloDados.js'
+import controleTextoImagemBanner from "./moduloControlerBanner.js"
+
 validaRecuperarSenha()
 
 switch (window.location.pathname) {
@@ -146,3 +148,6 @@ function validaRecuperarSenha() {
       })
     }
 };
+
+//Mudar Banner
+controleTextoImagemBanner.indicarIntervalo()
