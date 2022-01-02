@@ -54,6 +54,50 @@ const ajudaDados = [
         },
         msg: "Aparentemente, se o erro persistir, significa que você não esta cadastrado no nosso sistema. Cadastre-se no nosso menu, clicando na aba 'Entre no GoodPay' e no botão 'Novo Usuário'.",
     },
+    {
+        // ERRO REGISTRO - EMAIL
+        id: "1066",
+        idTitle: "gp-error#1066",
+        title: "Não foi possível cadastrar o e-mail",
+        desc: "Infelizmente o e-mail fornecido não pode ser cadastrado. Verifique se o e-mail está correto.",
+        idBusca: function () {
+            return this.idTitle + " " + this.title + " " + this.desc;
+        },
+        msg: "O e-mail deve estar completo, contendo @ e o provedor. Verifique se o e-mail está correto.",
+    },
+    {
+        // ERRO REGISTRO - USUARIO INVALIDO
+        id: "1077",
+        idTitle: "gp-error#1077",
+        title: "Não foi possível cadastrar o usuário",
+        desc: "Os nomes de usuários são únicos, verifique se esta escrito corretamente. Os nomes de usuário podem conter letras minúsculas e/ou números. Não pode ter espaço entre os caracteres (Ex: nomeapelido).",
+        idBusca: function () {
+            return this.idTitle + " " + this.title + " " + this.desc;
+        },
+        msg: "Caso  o nome escolhido ja tenha sido cadastrado, escolha outro nome.",
+    },
+    {
+        // ERRO REGISTRO - SENHA INVALIDA
+        id: "1088",
+        idTitle: "gp-error#1088",
+        title: "Não foi possível registrar a senha",
+        desc: "A senha deve conter entre 8 e 20 caracteres. Com no mínimo: 1 letra maiúscula, 1 letra minúscula, 1 número e um caracter especial(@ # $ % & *).",
+        idBusca: function () {
+            return this.idTitle + " " + this.title + " " + this.desc;
+        },
+        msg: "Verifique se a senha está contendo todos os requisitos para ser cadastrada.",
+    },
+    {
+        // ERRO REGISTRO - SENHA REPETIDA INVALIDA
+        id: "1099",
+        idTitle: "gp-error#1099",
+        title: "Senhas não conferem",
+        desc: "A senha deve conter entre 8 e 20 caracteres. Com no mínimo: 1 letra maiúscula, 1 letra minúscula, 1 número e um caracter especial(@ # $ % & *). Ambos os campos tem que ser iguais.",
+        idBusca: function () {
+            return this.idTitle + " " + this.title + " " + this.desc;
+        },
+        msg: "Verifique se a senha está contendo todos os requisitos para ser cadastrada e se ambos os campos estão corretamente preenchidos.",
+    },
 ];
 
 export default ajudaDados;
