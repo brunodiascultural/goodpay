@@ -72,7 +72,7 @@ class ControlerUserLogin {
             i => i.idModal === 'tentativasDemais1'
           )
           //Passando o resto das tentativas para o usuário
-          tentativasObject.bodyModal = `Você já fez ${this.attempts} tentativa(s)! Com três será redirecionado(a) para recuperar senha`
+          tentativasObject.bodyModal = `Error#1022 - Você já fez ${this.attempts} tentativa(s)! Com três será redirecionado(a) para recuperar senha`;
           return tentativasObject
         } else {
           this.attempts = 0
