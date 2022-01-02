@@ -98,54 +98,79 @@ novoUsuario.addEventListener('click', event => {
 })
 
 // Controle de acesso ao App.html
-function controllerApp() {
-    if (window.location.pathname === '/app.html') {
-        var myModalApp = new bootstrap.Modal(document.getElementById('myModalApp'))
-        document.getElementById('emailBadge').innerHTML = localStorage.email
-
-        document.getElementById(
-            'titleModalApp'
-        ).innerHTML = `Seja bem vindo, ${localStorage.userName}!`
-
-        document.getElementById('btnSair').addEventListener('click', e => {
-            localStorage.clear()
-            window.location.pathname = '/index.html'
-        })
-
-        if (!localStorage.email) {
+var timer
+function resetTimer() {
+    clearTimeout(timer)
+    timer = setTimeout(e => {
+        localStorage.clear();
+        if (document.getElementById('myModalApp')) {
+            var myModalApp = new bootstrap.Modal(document.getElementById('myModalApp'))
             document.getElementById('titleModalApp').innerHTML = 'Erro!'
-            document.getElementById('bodyModalApp').innerHTML =
-                'Você não possui permissão para acessar essa página!'
-            document.getElementById('btnModalApp').innerHTML = 'Voltar'
+            document.getElementById('bodyModalApp').innerHTML = 'Sua sessão expirou!'
+            document.getElementById('btnModalApp').innerHTML = 'Sair'
             document.getElementById('btnModalApp').addEventListener('click', e => {
                 window.location.pathname = '/index.html'
             })
             document.getElementById('btnModalCloseApp').addEventListener('click', e => {
                 window.location.pathname = '/index.html'
             })
-
-            myModalApp.show()
-        } else if (localStorage.getItem('contador') === null) {
-            myModalApp.show()
-            localStorage.setItem('contador', 'feito')
+            myModalApp.show();
         }
-    } else {
-        localStorage.removeItem('email')
-        localStorage.removeItem('userName')
-        localStorage.removeItem('contador')
-        localStorage.removeItem('status')
+    }, 300000)
+};
+if (window.location.pathname != 'app.html') {
+    localStorage.removeItem('email')
+    localStorage.removeItem('userName')
+    localStorage.removeItem('contador')
+    localStorage.removeItem('status')
+}
+
+function controllerApp() {
+    var myModalApp = new bootstrap.Modal(document.getElementById('myModalApp'))
+    document.getElementById('emailBadge').innerHTML = localStorage.email
+
+    document.getElementById(
+        'titleModalApp'
+    ).innerHTML = `Seja bem vindo, ${localStorage.userName}!`
+
+    document.getElementById('btnSair').addEventListener('click', e => {
+        localStorage.clear()
+        window.location.pathname = '/index.html'
+    })
+    // Detector de  inatividade!
+    window.onload = resetTimer
+    document.onmousemove = resetTimer
+    document.onkeydown = resetTimer
+
+    if (!localStorage.email) {
+        document.getElementById('titleModalApp').innerHTML = 'Erro!'
+        document.getElementById('bodyModalApp').innerHTML =
+            'Você não possui permissão para acessar essa página!'
+        document.getElementById('btnModalApp').innerHTML = 'Voltar'
+        document.getElementById('btnModalApp').addEventListener('click', e => {
+            window.location.pathname = '/index.html'
+        })
+        document.getElementById('btnModalCloseApp').addEventListener('click', e => {
+            window.location.pathname = '/index.html'
+        })
+
+        myModalApp.show()
+    } else if (localStorage.getItem('contador') === null) {
+        myModalApp.show()
+        localStorage.setItem('contador', 'feito')
     }
+
 };
 
 //Recuperar senha
 function validaRecuperarSenha() {
     if (window.location.pathname === "/recuperar.html") {
-      const campoRecuperarSenha = document.getElementById('btnRecuperar')
-      campoRecuperarSenha.addEventListener('click', (event) => {
-        let nome = document.getElementById('nome').value
-        let email = document.getElementById('email').value
-        controlerUserLogin.conferirUsuario(nome, email)
-      })
+        const campoRecuperarSenha = document.getElementById('btnRecuperar')
+        campoRecuperarSenha.addEventListener('click', (event) => {
+            let nome = document.getElementById('nome').value
+            let email = document.getElementById('email').value
+            controlerUserLogin.conferirUsuario(nome, email)
+        })
     }
 };
 
