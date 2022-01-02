@@ -2,7 +2,6 @@ import controlerUserLogin from './moduloControlerLogin.js'
 import controleRotasApp from './moduloControleRotas.js'
 import cardsBuilder from './moduloControlerCards.js'
 import comunicacaoModal from './moduloComunicacaoDados.js'
-import controllerMenuAjuda from "./moduloControllerAjuda.js";
 import userLogin from './moduloDados.js'
 import controleTextoImagemBanner from "./moduloControlerBanner.js"
 
@@ -18,9 +17,6 @@ switch (window.location.pathname) {
     default:
 }
 
-// Criando submenu de ajuda. # TEAM-35
-controllerMenuAjuda.construirSubMenuAjuda
-window.onload = controllerMenuAjuda.listaSugestao;
 // Adicionando cards
 function adicionarBloco() {
     let blocoCards = cardsBuilder.addCards()
